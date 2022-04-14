@@ -9,26 +9,81 @@ layout: default
 
   {{ content }}
 
+  <p class="home-heading">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur dolore esse ex facere nulla quas, repellat voluptates. Adipisci consequuntur deserunt dolorem illo numquam odio quam repudiandae rerum tempora vero.
+  </p>
+
+
+  <div class="home-categories container">
+    {% for category in site.categories %}
+    {% assign index = forloop.index | minus: 1 %}
+    {% assign remainder = index | modulo: 3 %}
+    {% assign rem = forloop.index | modulo: 3 %}
+      {% if remainder == 0 %}
+        <div class="row">
+      {% endif %}
+      <li class="home-categories-list-item col">
+        <a href="{{category.url}}"><strong>{{category|first}}</strong></a>
+      </li>
+      {% if rem == 0 %}
+          </div>
+
+      {% endif %}
+    {% endfor %}
+    </div>
+</div>
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+<!--    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>-->
     <ul class="post-list">
       {%- for post in site.posts -%}
+<!--      {{ forloop.index }}-->
       <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
         <h3>
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
           </a>
         </h3>
+        <div>
+          <div>
+            {{ post.subtitle }}
+          </div>
+          <div class="post-date">
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            <span class="post-meta">{{ post.date | date: date_format }}</span>
+          </div>
+
+        </div>
+
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
         {%- endif -%}
       </li>
       {%- endfor -%}
     </ul>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
   {%- endif -%}
 
-</div>
+  <div id="about-info">
+    <h2>About</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p>Hello</p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam amet culpa deserunt distinctio ducimus error et harum hic iusto nam nesciunt, officiis quaerat, quo saepe, tempora ut vero voluptas!
+        </div>
+        <div class="col">
+          <p>Hi</p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam blanditiis consectetur culpa ea eligendi eos est maiores quisquam rem sint, suscipit tempora temporibus velit. Ad dignissimos nihil nulla saepe unde!
+        </div>
+      </div>
+      <div class="row">
+        <p>Heya</p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt molestiae porro quae rerum vitae? A accusantium architecto assumenda consequuntur cupiditate magni minus, odio placeat quaerat reiciendis tempore ullam vel velit!
+      </div>
+      <div class="row">
+        <p>Last</p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cumque eligendi est eveniet labore modi obcaecati porro quas rem vero? Amet architecto asperiores beatae consectetur deserunt, facilis odio quibusdam quidem.
+      </div>
+    </div>
+  </div>
+
+

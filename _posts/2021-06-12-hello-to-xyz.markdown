@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2022-04-11 14:38:21 +0530
-categories: jekyll update
-subtitle: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur dolore esse ex facere nulla quas
+title:  "Hello ABC!"
+date:   2021-06-12 14:38:21 +0530
+categories: hello xyz
+subtitle: repellat voluptates. Adipisci consequuntur deserunt dolorem illo numquam odio quam repudiandae rerum tempora vero
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 

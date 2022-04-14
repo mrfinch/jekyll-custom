@@ -1,0 +1,59 @@
+---
+layout: default-custom
+---
+
+<div class="home">
+	{%- if page.title -%}
+	<h1 class="page-heading">{{ page.title }}</h1>
+	{%- endif -%}
+
+	{{ content }}
+
+	<p class="home-heading">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur dolore esse ex facere nulla quas, repellat voluptates. Adipisci consequuntur deserunt dolorem illo numquam odio quam repudiandae rerum tempora vero.
+	</p>
+
+
+	<div class="home-categories container">
+		{% assign categories = site.categories %}
+		{% for category in categories %}
+			{% assign index = forloop.index | minus: 1 %}
+			{% assign remainder = index | modulo: 3 %}
+			{% assign rem = forloop.index | modulo: 3 %}
+			{% if remainder == 0 %}
+				<div class="row">
+			{% endif %}
+					<li class="home-categories-list-item col-1-of-3" onclick="showCategory('{{category|first}}')">
+						<a><strong>{{category|first}}</strong></a>
+					</li>
+			{% if rem == 0 %}
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>
+
+{%- if site.posts.size > 0 -%}
+<ul class="post-list" id="post-list">
+	{%- for post in site.posts -%}
+		{%- include post-list-ui.html -%}
+	{%- endfor -%}
+</ul>
+{%- endif -%}
+
+<ul class="category-list">
+	{% for category in site.categories %}
+	<li class="{{ category | first}} category-list-item" style="display: none;">
+		<a name="{{ category | first }}"><h2>{{ category | first }}</h2></a>
+		<ul>
+			{% for post in category.last %}
+				{%- include post-list-ui.html -%}
+			{% endfor %}
+		</ul>
+	</li>
+	{% endfor %}
+</ul>
+
+
+
+</div>
